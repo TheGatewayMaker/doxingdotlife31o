@@ -15,6 +15,7 @@ interface AdminPostCardProps {
   onDelete: (postId: string) => void;
   onUpdate: (post: Post) => void;
   animationDelay: number;
+  authToken: string;
 }
 
 export default function AdminPostCard({
@@ -22,6 +23,7 @@ export default function AdminPostCard({
   onDelete,
   onUpdate,
   animationDelay,
+  authToken,
 }: AdminPostCardProps) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showMediaModal, setShowMediaModal] = useState(false);
