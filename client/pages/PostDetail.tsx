@@ -132,28 +132,28 @@ export default function PostDetail() {
             )}
 
             {/* Content */}
-            <div className="p-8 md:p-12">
+            <div className="p-6 sm:p-8 md:p-10">
               {/* Title */}
-              <h1 className="text-5xl md:text-6xl font-black mb-6 text-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-5 text-foreground leading-tight">
                 {post.title}
               </h1>
 
               {/* Metadata */}
-              <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {post.country && (
-                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
                     <GlobeIcon className="w-4 h-4" />
                     {post.country}
                   </span>
                 )}
                 {post.city && (
-                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
                     <MapPinIcon className="w-4 h-4" />
                     {post.city}
                   </span>
                 )}
                 {post.server && (
-                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="inline-flex items-center gap-2 bg-accent/20 text-accent px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
                     <ServerIcon className="w-4 h-4" />
                     {post.server}
                   </span>
@@ -161,7 +161,7 @@ export default function PostDetail() {
               </div>
 
               {/* Created Date */}
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-6 text-sm">
                 Posted on{" "}
                 {new Date(post.createdAt).toLocaleDateString("en-US", {
                   year: "numeric",
