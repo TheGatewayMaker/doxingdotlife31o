@@ -29,38 +29,18 @@ export default function UppostPanel() {
   const [uploadMessage, setUploadMessage] = useState("");
   const [uploadError, setUploadError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     setLoginError("");
     setIsLoggingIn(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: loginUsername,
-          password: loginPassword,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setLoginError(data.error || "Login failed");
-        setIsLoggingIn(false);
-        return;
-      }
-
-      login(data.token, loginUsername);
-      setLoginUsername("");
-      setLoginPassword("");
+      await loginWithGoogle();
+      toast.success("Successfully signed in with Google!");
     } catch (error) {
-      setLoginError("Network error. Please try again.");
-      console.error("Login error:", error);
-    } finally {
+      const errorMessage =
+        error instanceof Error ? error.message : "Login failed. Please try again.";
+      setLoginError(errorMessage);
+      toast.error(errorMessage);
       setIsLoggingIn(false);
     }
   };
