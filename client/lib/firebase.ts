@@ -93,6 +93,10 @@ export const signInWithGoogle = async (): Promise<User> => {
  * Sign out the current user
  */
 export const signOutUser = async (): Promise<void> => {
+  if (!auth) {
+    throw new Error("Firebase authentication is not configured.");
+  }
+
   try {
     await signOut(auth);
   } catch (error) {
@@ -125,6 +129,11 @@ export const isEmailAuthorized = (email: string): boolean => {
  * Get Firebase ID token for backend verification
  */
 export const getIdToken = async (): Promise<string | null> => {
+  if (!auth) {
+    console.warn("Firebase authentication is not configured.");
+    return null;
+  }
+
   try {
     const user = auth.currentUser;
     if (!user) return null;
@@ -134,3 +143,8 @@ export const getIdToken = async (): Promise<string | null> => {
     return null;
   }
 };
+
+/**
+ * Export auth instance (may be null if Firebase is not configured)
+ */
+export { auth };
