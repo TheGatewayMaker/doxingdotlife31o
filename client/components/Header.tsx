@@ -79,8 +79,9 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors"
+          className="md:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors z-50"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          aria-label="Toggle menu"
         >
           {isSidebarOpen ? (
             <X className="w-6 h-6 text-white" />
