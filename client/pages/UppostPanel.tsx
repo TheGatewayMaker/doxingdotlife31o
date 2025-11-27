@@ -481,26 +481,28 @@ export default function UppostPanel() {
             </div>
 
             {/* NSFW Checkbox */}
-            <div className="flex items-center gap-3 bg-red-900/20 border border-red-600/50 rounded-lg p-4">
-              <input
-                type="checkbox"
-                id="nsfw-checkbox"
-                checked={nsfw}
-                onChange={(e) => setNsfw(e.target.checked)}
-                className="w-5 h-5 accent-red-600 rounded cursor-pointer"
-              />
-              <label htmlFor="nsfw-checkbox" className="flex-1 cursor-pointer">
-                <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                  <p className="text-sm font-bold text-red-400">
-                    Mark as NSFW
+            <div className="relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 to-red-900/5 rounded-2xl" />
+              <div className="relative flex items-center gap-3 bg-red-900/15 border-2 border-red-600/40 hover:border-red-600/60 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-red-600/10">
+                <input
+                  type="checkbox"
+                  id="nsfw-checkbox"
+                  checked={nsfw}
+                  onChange={(e) => setNsfw(e.target.checked)}
+                  className="w-5 h-5 accent-red-600 rounded cursor-pointer flex-shrink-0"
+                />
+                <label htmlFor="nsfw-checkbox" className="flex-1 cursor-pointer">
+                  <div className="flex items-center gap-2 mb-1">
+                    <svg className="w-4 h-4 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <p className="text-sm font-bold text-red-400">
+                      Mark as NSFW Content
+                    </p>
+                  </div>
+                  <p className="text-xs text-red-300/80 ml-6">
+                    This content is Not Safe For Work and requires age verification
                   </p>
-                </div>
-                <p className="text-xs text-red-300 mt-1">
-                  This content is Not Safe For Work and requires age
-                  verification
-                </p>
-              </label>
+                </label>
+              </div>
             </div>
 
             {/* Media Upload */}
