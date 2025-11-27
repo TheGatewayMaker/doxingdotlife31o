@@ -354,6 +354,21 @@ export default function Index() {
     server.toLowerCase().includes(serverSearch.toLowerCase()),
   );
 
+  const searchSuggestions = searchQuery
+    ? posts
+        .filter(
+          (post) =>
+            post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            post.description.toLowerCase().includes(searchQuery.toLowerCase()),
+        )
+        .sort((a, b) => {
+          const aIndex = a.title.toLowerCase().indexOf(searchQuery.toLowerCase());
+          const bIndex = b.title.toLowerCase().indexOf(searchQuery.toLowerCase());
+          return aIndex - bIndex;
+        })
+        .slice(0, 8)
+    : [];
+
   useEffect(() => {
     const loadPosts = async () => {
       setIsLoadingPosts(true);
