@@ -485,7 +485,7 @@ export default function UppostPanel() {
                 <input
                   type="file"
                   onChange={handleThumbnailChange}
-                  accept="image/*"
+                  accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml,image/bmp,image/tiff,image/heic,image/heif,image/avif"
                   className="hidden"
                   id="thumbnail-upload"
                 />
@@ -519,7 +519,7 @@ export default function UppostPanel() {
                         Click to upload thumbnail
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Images only (Max 500MB)
+                        All image formats (PNG, JPG, JPEG, GIF, WebP, etc.) • Max 500MB
                       </p>
                     </div>
                   )}
