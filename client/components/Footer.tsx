@@ -110,7 +110,7 @@ export default function Footer() {
           </div>
           <div className="animate-fadeIn" style={{ animationDelay: "0.4s" }}>
             <h4 className="font-bold text-white mb-4 flex items-center gap-2 text-sm uppercase tracking-wider">
-              <ShoppingCartIcon className="w-4 h-4 text-[#979797]" />
+              <MessageIcon className="w-4 h-4 text-[#979797]" />
               Support
             </h4>
             <ul className="space-y-2.5 text-sm text-[#979797]">
@@ -119,8 +119,8 @@ export default function Footer() {
                   href="#"
                   className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1"
                 >
-                  <CreditCardIcon className="w-4 h-4" />
-                  <span>Premium Access</span>
+                  <FileTextIcon className="w-4 h-4" />
+                  <span>API Documentation</span>
                 </a>
               </li>
               <li>
@@ -128,8 +128,8 @@ export default function Footer() {
                   href="#"
                   className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1"
                 >
-                  <PhoneIcon className="w-4 h-4" />
-                  <span>Contact</span>
+                  <MessageIcon className="w-4 h-4" />
+                  <span>FAQ & Help</span>
                 </a>
               </li>
               <li>
@@ -137,8 +137,8 @@ export default function Footer() {
                   href="#"
                   className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1"
                 >
-                  <MailIcon className="w-4 h-4" />
-                  <span>Report Issue</span>
+                  <AlertIcon className="w-4 h-4" />
+                  <span>Report Data Issue</span>
                 </a>
               </li>
             </ul>
