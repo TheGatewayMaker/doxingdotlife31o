@@ -65,10 +65,10 @@ export default function DoxAnyone() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-0.5">
+                  <h3 className="text-sm font-bold text-white mb-0.5">
                     Click Dox Button
                   </h3>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[#979797] font-semibold">
                     Start your doxing submission process.
                   </p>
                 </div>
@@ -81,10 +81,10 @@ export default function DoxAnyone() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-0.5">
+                  <h3 className="text-sm font-bold text-white mb-0.5">
                     Discord Ticket
                   </h3>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[#979797] font-semibold">
                     Create a support ticket on Discord with details.
                   </p>
                 </div>
@@ -97,10 +97,10 @@ export default function DoxAnyone() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-0.5">
+                  <h3 className="text-sm font-bold text-white mb-0.5">
                     Prepare Content
                   </h3>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[#979797] font-semibold">
                     Gather photo and details for verification.
                   </p>
                 </div>
@@ -113,10 +113,10 @@ export default function DoxAnyone() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-0.5">
+                  <h3 className="text-sm font-bold text-white mb-0.5">
                     Payment
                   </h3>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[#979797] font-semibold">
                     Complete payment. Moderators verify submission.
                   </p>
                 </div>
@@ -129,10 +129,10 @@ export default function DoxAnyone() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white mb-0.5">
+                  <h3 className="text-sm font-bold text-white mb-0.5">
                     Publish
                   </h3>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-[#979797] font-semibold">
                     After verification, post goes live on website.
                   </p>
                 </div>
