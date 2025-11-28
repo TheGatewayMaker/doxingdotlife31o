@@ -322,9 +322,9 @@ export default function AllPosts() {
                 placeholder="Search Doxed Individuals"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 sm:px-5 py-3 sm:py-3.5 bg-slate-800 border-2 border-slate-700 hover:border-blue-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base transition-all shadow-md hover:shadow-lg hover:shadow-blue-500/30"
+                className="w-full px-4 sm:px-5 py-3 sm:py-3.5 bg-[#1a1a1a] border-2 border-[#666666] hover:border-[#0088CC] rounded-lg text-white placeholder-[#979797] focus:outline-none focus:ring-2 focus:ring-[#0088CC] focus:border-[#0088CC] text-sm sm:text-base transition-all shadow-md hover:shadow-lg hover:shadow-[#0088CC]/30"
               />
-              <Search className="absolute right-4 sm:right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+              <Search className="absolute right-4 sm:right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#979797] pointer-events-none" />
             </div>
 
             {/* Categories Section */}
