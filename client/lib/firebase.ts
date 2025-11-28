@@ -18,11 +18,41 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Validate Firebase config
+const isValidFirebaseConfig = Object.values(firebaseConfig).every(
+  (value) => value && typeof value === "string" && value.length > 0,
+);
 
-// Initialize Firebase Auth
-export const auth: Auth = getAuth(app);
+if (!isValidFirebaseConfig) {
+  console.error(
+    "Firebase configuration is missing or incomplete. Please set the following environment variables:",
+    "VITE_FIREBASE_API_KEY, VITE_FIREBASE_AUTH_DOMAIN, VITE_FIREBASE_PROJECT_ID, VITE_FIREBASE_STORAGE_BUCKET, VITE_FIREBASE_MESSAGING_SENDER_ID, VITE_FIREBASE_APP_ID",
+  );
+}
+
+// Initialize Firebase
+let app: ReturnType<typeof initializeApp> | null = null;
+let authInitialized = false;
+
+try {
+  app = initializeApp(firebaseConfig);
+  authInitialized = true;
+} catch (error) {
+  console.error("Failed to initialize Firebase:", error);
+  authInitialized = false;
+}
+
+// Initialize Firebase Auth (only if app initialized successfully)
+export let auth: Auth | null = null;
+
+if (authInitialized && app) {
+  try {
+    auth = getAuth(app);
+  } catch (error) {
+    console.error("Failed to initialize Firebase Auth:", error);
+    auth = null;
+  }
+}
 
 // Initialize Google Auth Provider
 const googleProvider = new GoogleAuthProvider();
