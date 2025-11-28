@@ -303,7 +303,7 @@ export default function Index() {
         {/* Hero Section */}
         <div className="bg-[#000000] py-8 md:py-16 border-b border-[#666666]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="animate-fadeIn" style={{ animationDelay: "0.1s" }}>
+            <div className="animate-slideInLeftFade" style={{ animationDelay: "0.1s" }}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 text-white tracking-tighter leading-tight">
                 Doxing Dot Life
               </h1>
@@ -315,7 +315,7 @@ export default function Index() {
 
             {/* Search Bar */}
             <div
-              className="relative mb-8 animate-fadeIn"
+              className="relative mb-8 animate-scaleUpFadeIn"
               style={{ animationDelay: "0.2s" }}
             >
               <input
@@ -329,7 +329,7 @@ export default function Index() {
             </div>
 
             {/* Filters Section */}
-            <div className="animate-fadeIn" style={{ animationDelay: "0.3s" }}>
+            <div className="animate-slideInUp" style={{ animationDelay: "0.3s" }}>
               <p className="text-xs sm:text-sm font-bold text-[#666666] uppercase tracking-wider mb-4">
                 Refine Your Search
               </p>
@@ -446,7 +446,7 @@ export default function Index() {
 
         {/* Posts Section */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="mb-10 sm:mb-12 animate-fadeIn">
+          <div className="mb-10 sm:mb-12 animate-slideInUp">
             {isLoadingPosts ? (
               <>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-3 flex items-center gap-3 text-white">
@@ -493,8 +493,8 @@ export default function Index() {
                   <div
                     key={post.id}
                     onClick={() => navigate(`/post/${post.id}`)}
-                    className="group rounded-xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 animate-fadeIn bg-[#1a1a1a] border border-[#666666] hover:border-[#0088CC] hover:shadow-2xl hover:shadow-[#0088CC]/20"
-                    style={{ animationDelay: `${idx * 0.05}s` }}
+                    className="group rounded-xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 animate-scaleUpFadeIn bg-[#1a1a1a] border border-[#666666] hover:border-[#0088CC] hover:shadow-2xl hover:shadow-[#0088CC]/20"
+                    style={{ animationDelay: `${idx * 0.08}s` }}
                   >
                     {post.thumbnail && (
                       <div className="w-full h-40 sm:h-48 bg-[#666666] overflow-hidden flex items-center justify-center relative">
@@ -580,7 +580,7 @@ export default function Index() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 animate-fadeIn">
+                <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 animate-slideInUp" style={{ animationDelay: "0.4s" }}>
                   <button
                     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
@@ -619,8 +619,8 @@ export default function Index() {
               )}
             </>
           ) : (
-            <div className="text-center py-16 sm:py-20 animate-fadeIn">
-              <div className="text-5xl sm:text-6xl mb-4">🔍</div>
+            <div className="text-center py-16 sm:py-20 animate-popIn" style={{ animationDelay: "0.2s" }}>
+              <div className="text-5xl sm:text-6xl mb-4 animate-slideInDown" style={{ animationDelay: "0.3s" }}>🔍</div>
               <p className="text-[#979797] text-sm sm:text-base max-w-lg mx-auto">
                 No posts match your current search filters. Try adjusting your
                 search terms or filters.
