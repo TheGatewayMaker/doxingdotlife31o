@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-md border-b border-gray-700 shadow-lg animate-fadeIn sticky top-0 z-40">
+    <header className="w-full bg-gradient-to-r from-[#000000] to-[#1a1a1a] backdrop-blur-md border-b border-[#666666] shadow-lg animate-fadeIn sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link
           to="/"
@@ -48,20 +48,20 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors duration-200"
+            className="flex items-center gap-2 text-sm font-semibold text-[#979797] hover:text-white transition-colors duration-200"
           >
             <HomeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="hidden xl:inline">Home</span>
           </Link>
           <Link
             to="/all-posts"
-            className="text-sm font-semibold text-gray-300 hover:text-white transition-colors duration-200"
+            className="text-sm font-semibold text-[#979797] hover:text-white transition-colors duration-200"
           >
             Posts
           </Link>
           <Link
             to="/dox-anyone"
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-blue-500/30"
+            className="flex items-center gap-2 px-5 py-2 bg-[#0088CC] text-white font-semibold rounded-lg hover:bg-[#0077BB] transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#0088CC]/40 active:scale-95"
           >
             <SearchAltIcon className="w-4 h-4" />
             <span>Dox Now</span>
@@ -70,21 +70,21 @@ export default function Header() {
             <>
               <Link
                 to="/uppostpanel"
-                className="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors duration-200"
+                className="flex items-center gap-2 text-sm font-semibold text-[#979797] hover:text-white transition-colors duration-200"
               >
                 <UploadIcon className="w-4 h-4" />
                 <span className="hidden xl:inline">Upload</span>
               </Link>
               <Link
                 to="/admin-panel"
-                className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-500 transition-all duration-200"
+                className="flex items-center gap-2 px-5 py-2 bg-[#666666] text-white font-semibold rounded-lg hover:bg-[#777777] transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 <SettingsIcon className="w-4 h-4" />
                 <span className="hidden xl:inline">Admin</span>
               </Link>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg hover:bg-gray-400 transition-all duration-200"
+                className="flex items-center gap-2 px-5 py-2 bg-[#666666] text-white font-semibold rounded-lg hover:bg-[#555555] transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 <LogOut className="w-4 h-4" />
                 <span className="hidden xl:inline">Logout</span>
