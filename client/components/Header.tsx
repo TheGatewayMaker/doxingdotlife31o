@@ -52,6 +52,12 @@ export default function Header() {
             Home
           </Link>
           <Link
+            to="/all-posts"
+            className="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
+          >
+            All Posts
+          </Link>
+          <Link
             to="/dox-anyone"
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all"
           >
