@@ -3,9 +3,9 @@
  */
 
 const WATERMARK_TEXT = "www.doxing.life";
-const WATERMARK_COLOR = "rgba(255, 255, 255, 0.3)";
-const WATERMARK_FONT_SIZE = 48;
-const WATERMARK_FONT = "bold 48px Arial";
+const WATERMARK_COLOR = "rgba(255, 255, 255, 0.6)";
+const WATERMARK_FONT_SIZE = 80;
+const WATERMARK_FONT = "bold 80px Arial";
 
 /**
  * Add watermark to an image
@@ -146,7 +146,7 @@ function applyWatermarkToCanvas(
   ctx.font = WATERMARK_FONT;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.globalAlpha = 0.3;
+  ctx.globalAlpha = 0.6;
 
   // Move to center and rotate
   ctx.translate(width / 2, height / 2);

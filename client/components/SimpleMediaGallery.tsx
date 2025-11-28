@@ -103,7 +103,7 @@ export default function SimpleMediaGallery({
         link.click();
         document.body.removeChild(link);
       }
-      toast.success("File downloaded with watermark");
+      toast.success("Downloaded Successful");
     } catch (error) {
       console.error("Download error:", error);
       toast.error("Failed to download file");
