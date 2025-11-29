@@ -152,5 +152,38 @@ export function createServer() {
     }
   });
 
+  // Global error handler middleware - MUST be last
+  app.use(
+    (
+      err: any,
+      req: express.Request,
+      res: express.Response,
+      next: express.NextFunction,
+    ) => {
+      console.error("Unhandled error:", err);
+
+      // Prevent sending response twice
+      if (res.headersSent) {
+        return next(err);
+      }
+
+      const status = err.status || err.statusCode || 500;
+      const message =
+        err.message || "An unexpected error occurred";
+      const details =
+        process.env.NODE_ENV === "development"
+          ? {
+              message: err.message,
+              stack: err.stack,
+            }
+          : undefined;
+
+      res.status(status).json({
+        error: message,
+        ...(details && { details }),
+      });
+    },
+  );
+
   return app;
 }
