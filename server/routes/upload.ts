@@ -174,14 +174,14 @@ export const handleUpload: RequestHandler = async (req, res) => {
             index: i + 1,
             error: errorMsg,
           });
-
-          // Continue uploading other files, but we'll report the error
-          if (i === files.media.length - 1 && uploadErrors.length > 0) {
-            throw new Error(
-              `Failed to upload ${uploadErrors.length} file(s): ${uploadErrors.map((e) => `File ${e.index}: ${e.error}`).join("; ")}`,
-            );
-          }
         }
+      }
+
+      // Check for upload errors after processing all files
+      if (uploadErrors.length > 0) {
+        throw new Error(
+          `Failed to upload ${uploadErrors.length} file(s): ${uploadErrors.map((e) => `File ${e.index}: ${e.error}`).join("; ")}`,
+        );
       }
 
       console.log(`Successfully uploaded ${mediaFileNames.length} media files`);
