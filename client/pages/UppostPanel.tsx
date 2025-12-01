@@ -207,6 +207,12 @@ export default function UppostPanel() {
       // Step 1: Generate presigned URLs for all files
       setUploadMessage("Preparing files for upload...");
 
+      if (!idToken) {
+        throw new Error("Failed to get authentication token. Please try logging in again.");
+      }
+
+      console.log("Token obtained successfully, token length:", idToken.length);
+
       const fileMetadata = [
         {
           fileName: `thumbnail-${Date.now()}`,
