@@ -90,7 +90,7 @@ export const authMiddleware: (
 
     const idToken = authHeader.replace("Bearer ", "");
     console.log(
-      `[${new Date().toISOString()}] Attempting to verify token for: ${req.method} ${req.path}`,
+      `[${new Date().toISOString()}] Auth middleware: Token received (${idToken.length} chars) for: ${req.method} ${req.path}`,
     );
 
     try {
@@ -102,6 +102,7 @@ export const authMiddleware: (
         );
         res.status(403).json({
           error: "Email is not authorized to access this resource",
+          email: verifiedToken.email,
         });
         return;
       }
@@ -120,8 +121,9 @@ export const authMiddleware: (
       const errorMsg =
         tokenError instanceof Error ? tokenError.message : String(tokenError);
       console.warn(
-        `[${new Date().toISOString()}] Token verification failed: ${errorMsg}`,
+        `[${new Date().toISOString()}] Auth middleware: Token verification failed: ${errorMsg}`,
       );
+      console.warn("Token error details:", tokenError);
       res.status(401).json({
         error: "Invalid or expired authentication token",
         details: process.env.NODE_ENV === "development" ? errorMsg : undefined,
