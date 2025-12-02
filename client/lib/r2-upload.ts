@@ -157,22 +157,12 @@ export const validateUploadInputs = (
   valid: boolean;
   error?: string;
 } => {
-  const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500MB per file
-
-  const oversizedFiles: string[] = [];
-
-  for (const file of files) {
-    if (file.size > MAX_FILE_SIZE) {
-      oversizedFiles.push(
-        `${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`,
-      );
-    }
-  }
-
-  if (oversizedFiles.length > 0) {
+  // VPS has no file size restrictions
+  // Client-side validation just ensures files exist
+  if (!files || files.length === 0) {
     return {
       valid: false,
-      error: `The following files exceed 500MB: ${oversizedFiles.join(", ")}`,
+      error: "At least one file is required",
     };
   }
 
