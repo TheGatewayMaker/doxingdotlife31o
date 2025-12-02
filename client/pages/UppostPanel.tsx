@@ -864,7 +864,8 @@ export default function UppostPanel() {
                         Click to upload media files
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Images and videos supported (unlimited size and quantity)
+                        Images and videos supported (unlimited size and
+                        quantity)
                       </p>
                     </div>
                   )}
