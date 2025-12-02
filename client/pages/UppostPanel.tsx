@@ -230,7 +230,7 @@ export default function UppostPanel() {
       });
 
       if (!uploadResponse.ok) {
-        let errorMsg = "Upload failed";
+        let errorMsg = `HTTP ${uploadResponse.status}: ${uploadResponse.statusText}`;
         try {
           const errorData = await uploadResponse.json();
           if (errorData.error) {
@@ -240,8 +240,8 @@ export default function UppostPanel() {
             errorMsg += `: ${errorData.details}`;
           }
         } catch (parseError) {
-          console.error("Failed to parse error response", parseError);
-          errorMsg = `HTTP ${uploadResponse.status}: ${uploadResponse.statusText}`;
+          console.error("Error parsing error response:", parseError);
+          // Keep the default HTTP error message if parsing fails
         }
         throw new Error(errorMsg);
       }
