@@ -146,12 +146,12 @@ export default function EditPostModal({
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to update post");
+        throw new Error(result.error || "Failed to update post");
       }
 
-      const result = await response.json();
       if (result.post) {
         onUpdate(result.post);
       }
