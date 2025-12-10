@@ -53,19 +53,19 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="flex items-center gap-2 sm:gap-3 hover:opacity-90 transition-opacity flex-shrink-0"
+          className="flex items-center gap-2 sm:gap-3 hover:opacity-90 transition-opacity flex-shrink-0 group"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-md flex-shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-md flex-shrink-0 group-hover:shadow-lg group-hover:shadow-[#0088CC]/30 transition-all">
             <img
               src="https://i.ibb.co/PzNWvp7N/doxinglifelogo.png"
               alt="Doxing Dot Life Logo"
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-black text-base sm:text-lg text-white hidden xs:inline line-clamp-1">
+          <span className="font-black text-base sm:text-lg text-white hidden xs:inline line-clamp-1 group-hover:text-[#0088CC] transition-colors">
             Doxing Dot Life
           </span>
-          <span className="font-black text-base sm:text-lg text-white xs:hidden">
+          <span className="font-black text-base sm:text-lg text-white xs:hidden group-hover:text-[#0088CC] transition-colors">
             DDL
           </span>
         </Link>
@@ -77,22 +77,24 @@ export default function Header() {
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm font-semibold text-[#979797] hover:text-white transition-colors duration-200 hover:scale-105"
+            className="flex items-center gap-2 text-sm font-semibold text-[#979797] hover:text-white transition-all duration-200 hover:scale-110 relative group"
           >
-            <HomeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="hidden xl:inline">Home</span>
+            <HomeIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-[#0088CC]" />
+            <span className="hidden xl:inline group-hover:text-[#0088CC]">Home</span>
+            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0088CC] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </Link>
           <Link
             to="/all-posts"
-            className="text-sm font-semibold text-[#979797] hover:text-white transition-colors duration-200"
+            className="text-sm font-semibold text-[#979797] hover:text-white transition-all duration-200 relative group"
           >
-            Posts
+            <span className="group-hover:text-[#0088CC]">Posts</span>
+            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0088CC] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </Link>
           <Link
             to="/dox-anyone"
-            className="flex items-center gap-2 px-5 py-2 bg-[#0088CC] text-white font-semibold rounded-lg hover:bg-[#0077BB] transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#0088CC]/40 active:scale-95"
+            className="flex items-center gap-2 px-5 py-2 bg-[#0088CC] text-white font-semibold rounded-lg hover:bg-[#0077BB] transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#0088CC]/40 active:scale-95 group"
           >
-            <SearchAltIcon className="w-4 h-4" />
+            <SearchAltIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span>Dox Now</span>
           </Link>
           {isAuthenticated && (
@@ -100,35 +102,35 @@ export default function Header() {
               {location.pathname !== "/uppostpanel" && (
                 <Link
                   to="/uppostpanel"
-                  className="flex items-center gap-2 px-5 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-purple-600/40 active:scale-95"
+                  className="flex items-center gap-2 px-5 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-purple-600/40 active:scale-95 group"
                 >
-                  <UploadIcon className="w-4 h-4" />
+                  <UploadIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <span className="hidden xl:inline">Upload</span>
                 </Link>
               )}
               {location.pathname !== "/admin-panel" && (
                 <Link
                   to="/admin-panel"
-                  className="flex items-center gap-2 px-5 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-amber-600/40 active:scale-95"
+                  className="flex items-center gap-2 px-5 py-2 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-amber-600/40 active:scale-95 group"
                 >
-                  <SettingsIcon className="w-4 h-4" />
+                  <SettingsIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   <span className="hidden xl:inline">Admin</span>
                 </Link>
               )}
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-5 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-red-600/40 active:scale-95"
+                className="flex items-center gap-2 px-5 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-red-600/40 active:scale-95 group"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 <span className="hidden xl:inline">Logout</span>
               </button>
             </>
           )}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - Modern Hamburger */}
         <button
-          className="lg:hidden p-2 hover:bg-[#666666]/40 active:bg-[#666666]/60 rounded-lg transition-all duration-200 relative touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#0088CC] focus:ring-offset-2 focus:ring-offset-[#000000]"
+          className="lg:hidden p-2 rounded-lg transition-all duration-300 relative touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#0088CC] focus:ring-offset-2 focus:ring-offset-[#000000] group hover:bg-[#666666]/40"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           aria-label={
             isSidebarOpen ? "Close navigation menu" : "Toggle navigation menu"
@@ -136,11 +138,24 @@ export default function Header() {
           aria-expanded={isSidebarOpen}
           aria-controls="mobile-menu"
         >
-          {isSidebarOpen ? (
-            <X className="w-6 h-6 text-white" />
-          ) : (
-            <Menu className="w-6 h-6 text-white" />
-          )}
+          <div className="relative w-6 h-5 flex items-center justify-center">
+            {/* Hamburger lines with modern animation */}
+            <div className="absolute w-full h-px bg-white transition-all duration-300 ease-in-out"
+              style={{
+                transform: isSidebarOpen ? "rotate(45deg) translateY(0)" : "translateY(-8px)",
+              }}
+            />
+            <div className="absolute w-full h-px bg-white transition-all duration-300 ease-in-out"
+              style={{
+                opacity: isSidebarOpen ? 0 : 1,
+              }}
+            />
+            <div className="absolute w-full h-px bg-white transition-all duration-300 ease-in-out"
+              style={{
+                transform: isSidebarOpen ? "rotate(-45deg) translateY(0)" : "translateY(8px)",
+              }}
+            />
+          </div>
         </button>
 
         {/* Mobile Sidebar Navigation */}
