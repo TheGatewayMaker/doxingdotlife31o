@@ -82,7 +82,8 @@ export const handleUpload: RequestHandler = async (req, res, next) => {
       );
       if (!res.headersSent) {
         res.status(401).json({
-          error: "You must be logged in to upload posts. Please sign in and try again.",
+          error:
+            "You must be logged in to upload posts. Please sign in and try again.",
         });
         responseSent = true;
       }

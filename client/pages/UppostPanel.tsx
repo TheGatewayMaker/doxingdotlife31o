@@ -491,7 +491,10 @@ export default function UppostPanel() {
             style={{ animationDelay: "0.2s" }}
           >
             {/* Title */}
-            <div className="animate-slideInDown" style={{ animationDelay: "0.25s" }}>
+            <div
+              className="animate-slideInDown"
+              style={{ animationDelay: "0.25s" }}
+            >
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Post Title <span className="text-destructive">*</span>
               </label>
@@ -507,7 +510,10 @@ export default function UppostPanel() {
             </div>
 
             {/* Description */}
-            <div className="animate-slideInUp" style={{ animationDelay: "0.27s" }}>
+            <div
+              className="animate-slideInUp"
+              style={{ animationDelay: "0.27s" }}
+            >
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Description <span className="text-destructive">*</span>
               </label>
@@ -523,7 +529,10 @@ export default function UppostPanel() {
             </div>
 
             {/* Thumbnail Upload */}
-            <div className="animate-slideInDown" style={{ animationDelay: "0.29s" }}>
+            <div
+              className="animate-slideInDown"
+              style={{ animationDelay: "0.29s" }}
+            >
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Thumbnail Image <span className="text-destructive">*</span>
               </label>
@@ -594,13 +603,19 @@ export default function UppostPanel() {
             </div>
 
             {/* Location Info */}
-            <div className="bg-background/40 border border-border/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 animate-slideInUp" style={{ animationDelay: "0.3s" }}>
+            <div
+              className="bg-background/40 border border-border/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 animate-slideInUp"
+              style={{ animationDelay: "0.3s" }}
+            >
               <h3 className="text-xs sm:text-sm font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-wider opacity-75">
                 Location Information (Optional)
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {/* Country */}
-                <div className="animate-slideInLeft" style={{ animationDelay: "0.35s" }}>
+                <div
+                  className="animate-slideInLeft"
+                  style={{ animationDelay: "0.35s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground flex items-center gap-2">
                     <svg
                       className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0"
@@ -624,7 +639,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* City */}
-                <div className="animate-slideInUp" style={{ animationDelay: "0.37s" }}>
+                <div
+                  className="animate-slideInUp"
+                  style={{ animationDelay: "0.37s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground flex items-center gap-2">
                     <svg
                       className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0"
@@ -647,7 +665,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Server */}
-                <div className="animate-slideInRight" style={{ animationDelay: "0.39s" }}>
+                <div
+                  className="animate-slideInRight"
+                  style={{ animationDelay: "0.39s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground flex items-center gap-2">
                     <svg
                       className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0"
@@ -674,13 +695,19 @@ export default function UppostPanel() {
             </div>
 
             {/* Personal Information Section */}
-            <div className="bg-background/40 border border-border/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 animate-slideInUp" style={{ animationDelay: "0.41s" }}>
+            <div
+              className="bg-background/40 border border-border/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 animate-slideInUp"
+              style={{ animationDelay: "0.41s" }}
+            >
               <h3 className="text-xs sm:text-sm font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-wider opacity-75">
                 Personal Information (Optional)
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Discord Username */}
-                <div className="animate-slideInLeft" style={{ animationDelay: "0.43s" }}>
+                <div
+                  className="animate-slideInLeft"
+                  style={{ animationDelay: "0.43s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Discord Username
                   </label>
@@ -694,7 +721,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Discord Name */}
-                <div className="animate-slideInRight" style={{ animationDelay: "0.43s" }}>
+                <div
+                  className="animate-slideInRight"
+                  style={{ animationDelay: "0.43s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Discord Name
                   </label>
@@ -708,7 +738,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Real Name */}
-                <div className="animate-slideInLeft" style={{ animationDelay: "0.45s" }}>
+                <div
+                  className="animate-slideInLeft"
+                  style={{ animationDelay: "0.45s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Real Name
                   </label>
@@ -722,7 +755,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Age */}
-                <div className="animate-slideInRight" style={{ animationDelay: "0.45s" }}>
+                <div
+                  className="animate-slideInRight"
+                  style={{ animationDelay: "0.45s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Age
                   </label>
@@ -736,7 +772,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Email */}
-                <div className="animate-slideInLeft" style={{ animationDelay: "0.47s" }}>
+                <div
+                  className="animate-slideInLeft"
+                  style={{ animationDelay: "0.47s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Email
                   </label>
@@ -750,7 +789,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* IP Address */}
-                <div className="animate-slideInRight" style={{ animationDelay: "0.47s" }}>
+                <div
+                  className="animate-slideInRight"
+                  style={{ animationDelay: "0.47s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     IP Address
                   </label>
@@ -764,7 +806,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Address */}
-                <div className="animate-slideInLeft" style={{ animationDelay: "0.49s" }}>
+                <div
+                  className="animate-slideInLeft"
+                  style={{ animationDelay: "0.49s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Address
                   </label>
@@ -778,7 +823,10 @@ export default function UppostPanel() {
                 </div>
 
                 {/* Phone Number */}
-                <div className="animate-slideInRight" style={{ animationDelay: "0.49s" }}>
+                <div
+                  className="animate-slideInRight"
+                  style={{ animationDelay: "0.49s" }}
+                >
                   <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                     Phone Number
                   </label>
@@ -794,7 +842,10 @@ export default function UppostPanel() {
             </div>
 
             {/* NSFW Checkbox */}
-            <div className="relative overflow-hidden animate-slideInLeft" style={{ animationDelay: "0.53s" }}>
+            <div
+              className="relative overflow-hidden animate-slideInLeft"
+              style={{ animationDelay: "0.53s" }}
+            >
               <div className="relative flex items-start sm:items-center gap-3 bg-red-900/15 border-2 border-red-600/40 hover:border-red-600/60 rounded-lg sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:shadow-red-600/10">
                 <input
                   type="checkbox"
@@ -828,7 +879,10 @@ export default function UppostPanel() {
             </div>
 
             {/* Trend Checkbox */}
-            <div className="relative overflow-hidden animate-slideInRight" style={{ animationDelay: "0.53s" }}>
+            <div
+              className="relative overflow-hidden animate-slideInRight"
+              style={{ animationDelay: "0.53s" }}
+            >
               <div className="relative flex items-start sm:items-center gap-3 bg-amber-900/15 border-2 border-amber-600/40 hover:border-amber-600/60 rounded-lg sm:rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/10">
                 <input
                   type="checkbox"
@@ -882,7 +936,10 @@ export default function UppostPanel() {
             </div>
 
             {/* Media Upload */}
-            <div className="animate-slideInUp" style={{ animationDelay: "0.51s" }}>
+            <div
+              className="animate-slideInUp"
+              style={{ animationDelay: "0.51s" }}
+            >
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Media Files <span className="text-destructive">*</span>
               </label>
@@ -938,7 +995,11 @@ export default function UppostPanel() {
                     </p>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
                       {mediaPreviews.map((media, idx) => (
-                        <div key={idx} className="relative group animate-scaleUpFadeIn" style={{ animationDelay: `${idx * 0.05}s` }}>
+                        <div
+                          key={idx}
+                          className="relative group animate-scaleUpFadeIn"
+                          style={{ animationDelay: `${idx * 0.05}s` }}
+                        >
                           {media.type.startsWith("image/") ? (
                             <img
                               src={media.preview}

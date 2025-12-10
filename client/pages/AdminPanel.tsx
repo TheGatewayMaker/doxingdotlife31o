@@ -326,7 +326,10 @@ export default function AdminPanel() {
               </div>
               <div className="grid grid-cols-1 gap-2 sm:gap-3">
                 {/* Country Dropdown */}
-                <div className="relative group animate-slideInDown" style={{ animationDelay: "0.35s" }}>
+                <div
+                  className="relative group animate-slideInDown"
+                  style={{ animationDelay: "0.35s" }}
+                >
                   <label className="text-xs font-bold text-foreground block mb-2 flex items-center gap-1.5">
                     <GlobeIcon className="w-3 h-3 text-muted-foreground flex-shrink-0" />
                     Country
