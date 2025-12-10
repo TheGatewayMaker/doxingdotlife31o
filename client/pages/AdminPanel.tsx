@@ -196,9 +196,10 @@ export default function AdminPanel() {
         credentials: "include",
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to delete post");
+        throw new Error(data.error || "Failed to delete post");
       }
 
       setPosts((prevPosts) =>
