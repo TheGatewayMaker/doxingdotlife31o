@@ -281,12 +281,9 @@ export default function UppostPanel() {
         if (uploadResponse.status === 413) {
           errorMsg +=
             " (This might be due to large file sizes. Try reducing the number of files or their sizes.)";
-        } else if (uploadResponse.status === 401) {
-          errorMsg +=
-            " (Your session has expired. Please sign out and sign in again.)";
         } else if (uploadResponse.status === 403) {
-          errorMsg +=
-            " (Your email is not authorized to upload. Contact the administrator.)";
+          errorMsg =
+            "Your email is not authorized to upload. Contact the administrator.";
         } else if (uploadResponse.status === 500) {
           errorMsg += " (Server error - the administrator has been notified.)";
         }
