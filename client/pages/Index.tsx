@@ -195,7 +195,7 @@ export default function Index() {
                     }}
                   >
                     {post.thumbnail && (
-                      <div className="w-full aspect-square bg-[#1a1a1a] overflow-hidden flex items-center justify-center relative flex-shrink-0">
+                      <div className="w-full aspect-video bg-[#1a1a1a] overflow-hidden flex items-center justify-center relative flex-shrink-0">
                         <img
                           src={post.thumbnail}
                           alt={post.title}
@@ -223,18 +223,18 @@ export default function Index() {
                         />
                       </div>
                     )}
-                    <div className="p-2 sm:p-3 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between gap-2 mb-1.5">
+                    <div className="p-1.5 sm:p-2 flex-1 flex flex-col">
+                      <div className="flex items-start justify-between gap-1.5 mb-1">
                         <h3 className="font-bold text-xs line-clamp-1 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
                           {post.title}
                         </h3>
                         {post.nsfw && (
-                          <span className="inline-flex items-center gap-0.5 bg-red-600 text-white px-1.5 py-0.5 rounded text-xs font-bold flex-shrink-0 whitespace-nowrap">
+                          <span className="inline-flex items-center gap-0.5 bg-red-600 text-white px-1.5 py-0.5 rounded-md text-xs font-bold flex-shrink-0 whitespace-nowrap border border-transparent hover:border-red-400 transition-all duration-200 cursor-default shadow-sm hover:shadow-md hover:shadow-red-600/30">
                             NSFW
                           </span>
                         )}
                       </div>
-                      <p className="text-xs line-clamp-1 mb-2 text-[#979797] flex-1">
+                      <p className="text-xs line-clamp-1 mb-1.5 text-[#979797] flex-1">
                         {post.description}
                       </p>
                       <div className="flex flex-wrap gap-1">
