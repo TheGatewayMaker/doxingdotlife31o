@@ -67,7 +67,7 @@ export default function AdminPostCard({
               {post.title}
             </h3>
             {post.nsfw && (
-              <span className="inline-flex items-center gap-1 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold flex-shrink-0">
+              <span className="inline-flex items-center gap-1 bg-[#FF0000] text-white px-2 py-1 rounded text-xs font-bold flex-shrink-0">
                 <svg
                   className="w-3 h-3"
                   viewBox="0 0 24 24"
