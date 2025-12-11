@@ -200,7 +200,7 @@ export default function PostDetail() {
               <div className="mb-4">
                 <div className="flex flex-wrap items-center gap-2 mb-4">
                   {post.nsfw && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/20 text-red-400 text-xs font-bold rounded-full border border-red-600/40">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FF0000]/20 text-[#FF0000] text-xs font-bold rounded-full border border-[#FF0000]/40">
                       <NSFWIcon className="w-4 h-4" />
                       NSFW
                     </span>
