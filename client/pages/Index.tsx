@@ -221,6 +221,11 @@ export default function Index() {
                           loading="lazy"
                           decoding="async"
                         />
+                        {post.nsfw && (
+                          <span className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-[#FF0000] text-white font-black text-xs sm:text-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md shadow-lg">
+                            18+
+                          </span>
+                        )}
                       </div>
                     )}
                     <div className="p-3 sm:p-4 flex-1 flex flex-col">
