@@ -1,4 +1,4 @@
-import { CloseIcon, NSFWIcon } from "./Icons";
+import { CloseIcon } from "./Icons";
 
 interface NSFWWarningModalProps {
   onProceed: () => void;
@@ -10,31 +10,38 @@ export default function NSFWWarningModal({
   onGoBack,
 }: NSFWWarningModalProps) {
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 animate-fadeIn">
-      <div className="bg-red-950 border-2 border-red-600 rounded-xl w-full max-w-md p-8 shadow-2xl shadow-red-600/30 animate-fadeIn">
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 animate-fadeIn">
+      <div className="bg-[#1a1a1a] border border-[#333333] rounded-lg w-full max-w-sm p-8 animate-fadeIn">
         {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <NSFWIcon className="w-7 h-7 text-red-400" />
-              <h2 className="text-3xl font-black text-red-400">NSFW Warning</h2>
-            </div>
-            <p className="text-sm text-red-200">Adult Content Alert</p>
-          </div>
+        <div className="flex items-start justify-between mb-8">
+          <h2 className="text-2xl font-bold text-white">
+            Age Verification Required
+          </h2>
           <button
             onClick={onGoBack}
-            className="text-red-400 hover:text-red-300 transition-colors"
+            className="text-[#979797] hover:text-white transition-colors flex-shrink-0"
           >
-            <CloseIcon className="w-6 h-6" />
+            <CloseIcon className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="bg-red-900/30 border border-red-600/50 rounded-lg p-5 mb-6">
-          <p className="text-sm text-red-100">
-            This content contains material that is{" "}
-            <strong>Not Safe For Work (NSFW)</strong>. This content may not be
-            appropriate for all audiences.
+        <div className="mb-8 space-y-4">
+          <p className="text-[#d0d0d0] text-base leading-relaxed">
+            This content is marked as <strong>NSFW</strong> (Not Safe For Work)
+            and contains adult material.
+          </p>
+          <p className="text-[#b0b0b0] text-sm leading-relaxed">
+            By proceeding, you confirm that you are{" "}
+            <strong>18 years of age or older</strong> and wish to view this
+            content.
+          </p>
+        </div>
+
+        {/* Question */}
+        <div className="bg-[#252525] border border-[#333333] rounded-md p-4 mb-8">
+          <p className="text-white font-semibold">
+            Are you 18 years of age or older?
           </p>
         </div>
 
@@ -42,15 +49,15 @@ export default function NSFWWarningModal({
         <div className="flex gap-3">
           <button
             onClick={onGoBack}
-            className="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-all active:scale-95"
+            className="flex-1 px-4 py-3 bg-[#2a2a2a] hover:bg-[#333333] text-white font-semibold rounded-lg transition-all active:scale-95 text-sm"
           >
-            Go Back
+            No, Go Back
           </button>
           <button
             onClick={onProceed}
-            className="flex-1 px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all active:scale-95"
+            className="flex-1 px-4 py-3 bg-[#0088CC] hover:bg-[#0077BB] text-white font-semibold rounded-lg transition-all active:scale-95 text-sm"
           >
-            I Understand
+            Yes, I'm 18+
           </button>
         </div>
       </div>

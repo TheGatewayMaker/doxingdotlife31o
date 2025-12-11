@@ -130,8 +130,8 @@ export default function AllPosts() {
         </div>
 
         {/* All Posts */}
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12 lg:py-16">
-          <div className="mb-8 sm:mb-10 md:mb-12 animate-slideInUp">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-5 md:py-6 lg:py-8">
+          <div className="mb-4 sm:mb-6 md:mb-8 animate-slideInUp">
             {isLoadingPosts ? (
               <>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-2 sm:mb-3 flex items-center gap-2 sm:gap-3 text-white">
@@ -157,13 +157,13 @@ export default function AllPosts() {
               </>
             ) : (
               <>
-                <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+                <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 mb-0.5 sm:mb-1 md:mb-2">
                   <Flame className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-orange-500" />
                   <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white">
                     All Posts
                   </h2>
                 </div>
-                <p className="text-[#979797] text-xs sm:text-sm md:text-base mt-2 sm:mt-3">
+                <p className="text-[#979797] text-xs sm:text-sm md:text-base mt-0">
                   Showing {displayedPosts.length} of {filteredPosts.length} post
                   {filteredPosts.length !== 1 ? "s" : ""}
                 </p>
@@ -173,16 +173,16 @@ export default function AllPosts() {
 
           {displayedPosts.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-8 sm:mb-10 md:mb-12">
+              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-4 sm:mb-6 md:mb-8">
                 {displayedPosts.map((post, idx) => (
                   <div
                     key={post.id}
                     onClick={() => navigate(`/post/${post.id}`)}
                     className={cn(
-                      "group rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 animate-scaleUpFadeIn border hover:shadow-2xl flex flex-col h-full active:scale-95 sm:active:scale-100",
+                      "group rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 cursor-pointer animate-scaleUpFadeIn flex flex-col h-full active:scale-95 sm:active:scale-100",
                       post.isTrend
-                        ? "bg-gradient-to-br from-[#4a3a1a] via-[#3a2a1a] to-[#2a1a0a] border-[#9d7e1f] hover:border-[#ffd700] hover:shadow-[#ffd700]/20"
-                        : "bg-[#1a1a1a] border-[#666666] hover:border-[#0088CC] hover:shadow-[#0088CC]/20",
+                        ? "bg-gradient-to-br from-[#4a3a1a] via-[#3a2a1a] to-[#2a1a0a] hover:from-[#5a4a2a] hover:via-[#4a3a2a] hover:to-[#3a2a1a]"
+                        : "bg-[#1a1a1a] hover:bg-[#252525]",
                     )}
                     style={{ animationDelay: `${idx * 0.08}s` }}
                     role="link"
@@ -198,7 +198,7 @@ export default function AllPosts() {
                         <img
                           src={post.thumbnail}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           onError={(e) => {
                             const img = e.target as HTMLImageElement;
                             img.style.display = "none";
@@ -222,24 +222,24 @@ export default function AllPosts() {
                         />
                       </div>
                     )}
-                    <div className="p-2 sm:p-3 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between gap-1.5 mb-1.5 sm:mb-2">
-                        <h3 className="font-bold text-xs sm:text-sm md:text-base line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
+                    <div className="p-3 sm:p-4 flex-1 flex flex-col">
+                      <div className="flex items-start justify-between gap-2 mb-2.5 sm:mb-3">
+                        <h3 className="font-black text-base sm:text-lg lg:text-xl line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
                           {post.title}
                         </h3>
                         {post.nsfw && (
-                          <span className="inline-flex items-center gap-0.5 bg-red-600 text-white px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-xs font-bold flex-shrink-0 whitespace-nowrap border border-transparent hover:border-red-400 transition-all duration-200 cursor-default shadow-sm hover:shadow-md hover:shadow-red-600/30">
+                          <span className="text-red-500 font-black text-sm sm:text-base flex-shrink-0">
                             NSFW
                           </span>
                         )}
                       </div>
-                      <p className="text-xs line-clamp-2 sm:line-clamp-2 mb-2 sm:mb-3 text-[#979797] flex-1">
-                        {post.description.replace(/\*\*/g, "")}
+                      <p className="text-xs sm:text-sm line-clamp-2 mb-3 sm:mb-4 text-[#d0d0d0] font-semibold flex-1 leading-relaxed">
+                        {post.description.replace(/\*\*|[*]/g, "")}
                       </p>
-                      <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                      <div className="flex flex-wrap gap-2 opacity-100 group-hover:opacity-100 transition-opacity">
                         {post.country && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
-                            <GlobeIcon className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
+                            <GlobeIcon className="w-3.5 h-3.5" />
                             <span className="hidden sm:inline">
                               {post.country}
                             </span>
@@ -249,8 +249,8 @@ export default function AllPosts() {
                           </span>
                         )}
                         {post.city && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
-                            <MapPinIcon className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
+                            <MapPinIcon className="w-3.5 h-3.5" />
                             <span className="hidden sm:inline">
                               {post.city}
                             </span>
@@ -260,8 +260,8 @@ export default function AllPosts() {
                           </span>
                         )}
                         {post.server && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
-                            <ServerIcon className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
+                            <ServerIcon className="w-3.5 h-3.5" />
                             <span className="hidden sm:inline">
                               {post.server}
                             </span>
