@@ -179,10 +179,10 @@ export default function AllPosts() {
                     key={post.id}
                     onClick={() => navigate(`/post/${post.id}`)}
                     className={cn(
-                      "group rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 animate-scaleUpFadeIn border hover:shadow-2xl flex flex-col h-full active:scale-95 sm:active:scale-100",
+                      "group rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 cursor-pointer animate-scaleUpFadeIn flex flex-col h-full active:scale-95 sm:active:scale-100",
                       post.isTrend
-                        ? "bg-gradient-to-br from-[#4a3a1a] via-[#3a2a1a] to-[#2a1a0a] border-[#9d7e1f] hover:border-[#ffd700] hover:shadow-[#ffd700]/20"
-                        : "bg-[#1a1a1a] border-[#666666] hover:border-[#0088CC] hover:shadow-[#0088CC]/20",
+                        ? "bg-gradient-to-br from-[#4a3a1a] via-[#3a2a1a] to-[#2a1a0a] hover:shadow-[0_0_30px_rgba(255,215,0,0.3)] hover:bg-gradient-to-br hover:from-[#5a4a2a] hover:via-[#4a3a2a] hover:to-[#3a2a1a]"
+                        : "bg-[#1a1a1a] hover:shadow-[0_0_20px_rgba(0,136,204,0.25)] hover:bg-[#242424]",
                     )}
                     style={{ animationDelay: `${idx * 0.08}s` }}
                     role="link"
@@ -198,7 +198,7 @@ export default function AllPosts() {
                         <img
                           src={post.thumbnail}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           onError={(e) => {
                             const img = e.target as HTMLImageElement;
                             img.style.display = "none";
@@ -222,23 +222,25 @@ export default function AllPosts() {
                         />
                       </div>
                     )}
-                    <div className="p-2 sm:p-3 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between gap-1.5 mb-1.5 sm:mb-2">
-                        <h3 className="font-bold text-xs sm:text-sm md:text-base line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
+                    <div className="p-3 sm:p-4 flex-1 flex flex-col">
+                      <div className="flex items-start justify-between gap-2 mb-2 sm:mb-3">
+                        <h3 className="font-bold text-sm sm:text-base lg:text-lg line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
                           {post.title}
                         </h3>
                         {post.nsfw && (
-                          <span className="inline-flex items-center gap-0.5 bg-red-600 text-white px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-xs font-bold flex-shrink-0 whitespace-nowrap border border-transparent hover:border-red-400 transition-all duration-200 cursor-default shadow-sm hover:shadow-md hover:shadow-red-600/30">
-                            NSFW
-                          </span>
+                          <div className="relative inline-flex items-center flex-shrink-0">
+                            <span className="inline-flex items-center gap-0.5 bg-red-600 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs sm:text-sm font-black flex-shrink-0 whitespace-nowrap transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:shadow-red-600/40 hover:bg-red-700">
+                              NSFW
+                            </span>
+                          </div>
                         )}
                       </div>
-                      <p className="text-xs line-clamp-2 sm:line-clamp-2 mb-2 sm:mb-3 text-[#979797] flex-1">
+                      <p className="text-xs sm:text-sm line-clamp-2 mb-3 sm:mb-4 text-[#979797] flex-1 leading-relaxed">
                         {post.description.replace(/\*\*/g, "")}
                       </p>
-                      <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 opacity-70 group-hover:opacity-90 transition-opacity">
                         {post.country && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#333333] text-[#b0b0b0] flex-shrink-0">
                             <GlobeIcon className="w-3 h-3" />
                             <span className="hidden sm:inline">
                               {post.country}
@@ -249,7 +251,7 @@ export default function AllPosts() {
                           </span>
                         )}
                         {post.city && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#333333] text-[#b0b0b0] flex-shrink-0">
                             <MapPinIcon className="w-3 h-3" />
                             <span className="hidden sm:inline">
                               {post.city}
@@ -260,7 +262,7 @@ export default function AllPosts() {
                           </span>
                         )}
                         {post.server && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 sm:px-2 md:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium bg-[#666666] text-white border border-[#979797] flex-shrink-0">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#333333] text-[#b0b0b0] flex-shrink-0">
                             <ServerIcon className="w-3 h-3" />
                             <span className="hidden sm:inline">
                               {post.server}
