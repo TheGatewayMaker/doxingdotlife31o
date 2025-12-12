@@ -6,13 +6,13 @@ interface Snowflake {
   size: number;
   duration: number;
   delay: number;
-  swing: number;
+  swingAmount: number;
   opacity: number;
 }
 
 const SnowfallEffect = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const snowflakesRef = useRef<Snowflake[]>([]);
+  const styleRef = useRef<HTMLStyleElement | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -30,59 +30,30 @@ const SnowfallEffect = () => {
           size: Math.random() * (4 - 1.5) + 1.5,
           duration: Math.random() * (20 - 10) + 10,
           delay: Math.random() * 5,
-          swing: Math.random() * 100 - 50,
+          swingAmount: Math.random() * 100 - 50,
           opacity: Math.random() * (0.8 - 0.3) + 0.3,
         });
       }
       return flakes;
     };
 
-    snowflakesRef.current = generateSnowflakes();
-
-    // Clear existing snowflakes
-    container.innerHTML = "";
-
-    // Create snowflake elements
-    snowflakesRef.current.forEach((flake) => {
-      const snowflake = document.createElement("div");
-      snowflake.className =
-        "fixed pointer-events-none select-none animate-snowfall";
-      snowflake.innerHTML = "❄";
-
-      snowflake.style.cssText = `
-        left: ${flake.x}%;
-        top: -10px;
-        font-size: ${flake.size}px;
-        opacity: ${flake.opacity};
-        animation: snowfall ${flake.duration}s linear ${flake.delay}s infinite;
-        --tx: ${flake.swing}px;
-        z-index: 10;
-        text-shadow: 0 0 8px rgba(0, 136, 204, 0.3);
-      `;
-
-      // Add horizontal swing animation as a secondary transform
-      const swingStyle = document.createElement("style");
-      swingStyle.innerHTML = `
-        #${flake.id} {
-          animation: snowfall ${flake.duration}s linear ${flake.delay}s infinite,
-                    snowswing ${flake.duration * 0.8}s ease-in-out ${flake.delay}s infinite;
-        }
-      `;
-      document.head.appendChild(swingStyle);
-
-      snowflake.id = flake.id;
-      container.appendChild(snowflake);
-    });
-
-    // Regenerate snowflakes when window is resized
-    const handleResize = () => {
-      snowflakesRef.current = generateSnowflakes();
+    const createSnowflakes = (flakes: Snowflake[]) => {
+      // Clear existing content
       container.innerHTML = "";
 
-      snowflakesRef.current.forEach((flake) => {
+      // Create or update the style element
+      if (!styleRef.current) {
+        styleRef.current = document.createElement("style");
+        document.head.appendChild(styleRef.current);
+      }
+
+      let cssRules = "";
+
+      flakes.forEach((flake) => {
         const snowflake = document.createElement("div");
+        snowflake.id = flake.id;
         snowflake.className =
-          "fixed pointer-events-none select-none animate-snowfall";
+          "fixed pointer-events-none select-none font-semibold";
         snowflake.innerHTML = "❄";
 
         snowflake.style.cssText = `
@@ -90,41 +61,49 @@ const SnowfallEffect = () => {
           top: -10px;
           font-size: ${flake.size}px;
           opacity: ${flake.opacity};
-          animation: snowfall ${flake.duration}s linear ${flake.delay}s infinite;
-          --tx: ${flake.swing}px;
           z-index: 10;
           text-shadow: 0 0 8px rgba(0, 136, 204, 0.3);
         `;
 
-        const swingStyle = document.createElement("style");
-        swingStyle.innerHTML = `
+        container.appendChild(snowflake);
+
+        // Build CSS rules for animations
+        cssRules += `
           #${flake.id} {
             animation: snowfall ${flake.duration}s linear ${flake.delay}s infinite,
                       snowswing ${flake.duration * 0.8}s ease-in-out ${flake.delay}s infinite;
           }
         `;
-        document.head.appendChild(swingStyle);
-
-        snowflake.id = flake.id;
-        container.appendChild(snowflake);
       });
+
+      // Update all styles at once
+      if (styleRef.current) {
+        styleRef.current.innerHTML = cssRules;
+      }
     };
 
-    const resizeObserver = new ResizeObserver(() => {
-      handleResize();
-    });
+    const flakes = generateSnowflakes();
+    createSnowflakes(flakes);
 
-    resizeObserver.observe(container);
+    // Handle window resize
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const newFlakes = generateSnowflakes();
+        createSnowflakes(newFlakes);
+      }, 250);
+    };
+
     window.addEventListener("resize", handleResize);
 
     return () => {
-      resizeObserver.disconnect();
+      clearTimeout(resizeTimeout);
       window.removeEventListener("resize", handleResize);
-      // Clean up styles
-      const styles = document.querySelectorAll(
-        'style[id*="snowflake-"]'
-      ) as NodeListOf<HTMLStyleElement>;
-      styles.forEach((style) => style.remove());
+      if (styleRef.current && styleRef.current.parentElement) {
+        styleRef.current.remove();
+        styleRef.current = null;
+      }
     };
   }, []);
 
