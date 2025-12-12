@@ -110,9 +110,10 @@ const SnowfallEffect = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden z-0"
+      className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden z-20"
       style={{
-        mixBlendMode: "screen",
+        mixBlendMode: "overlay",
+        willChange: "transform",
       }}
     />
   );
