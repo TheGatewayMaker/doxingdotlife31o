@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, LogOut } from "lucide-react";
+import { Menu, X, LogOut, ChevronRight } from "lucide-react";
 import {
   HomeIcon,
   UploadIcon,
@@ -11,6 +11,7 @@ import { useAuthContext } from "@/contexts/AuthContext";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const { isAuthenticated, logout } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +31,7 @@ export default function Header() {
   useEffect(() => {
     const handleEscapeKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isSidebarOpen) {
-        setIsSidebarOpen(false);
+        closeSidebar();
       }
     };
 
@@ -39,7 +40,11 @@ export default function Header() {
   }, [isSidebarOpen]);
 
   const closeSidebar = () => {
-    setIsSidebarOpen(false);
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsSidebarOpen(false);
+      setIsClosing(false);
+    }, 350);
   };
 
   const handleLogout = async () => {
