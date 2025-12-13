@@ -241,7 +241,7 @@ export default function AllPosts() {
                           {post.title}
                         </h3>
                       </div>
-                      <p className="text-xs sm:text-sm font-bold text-[#0088CC] cursor-pointer hover:text-[#00AADD] transition-colors">
+                      <p className="text-xs sm:text-sm font-bold text-white cursor-pointer hover:text-[#0088CC] transition-colors mb-2 sm:mb-3">
                         Click to see Full Post
                       </p>
                       <div className="hidden sm:flex flex-wrap gap-1 opacity-100 group-hover:opacity-100 transition-opacity">
