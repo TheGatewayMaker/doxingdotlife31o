@@ -173,7 +173,7 @@ export default function AllPosts() {
 
           {displayedPosts.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-4 sm:mb-6 md:mb-8">
+              <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 xs:gap-2.5 sm:gap-4 md:gap-5 lg:gap-6 mb-4 sm:mb-6 md:mb-8">
                 {displayedPosts.map((post, idx) => (
                   <div
                     key={post.id}
@@ -223,58 +223,36 @@ export default function AllPosts() {
                         {post.nsfw && (
                           <>
                             <div className="absolute top-0 right-0 w-1/5 h-1/5 bg-gradient-to-bl from-black/40 to-transparent pointer-events-none blur-xl" />
-                            <span className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-[#FF0000] text-white font-black text-xs sm:text-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md z-10">
+                            <span className="absolute top-1 sm:top-3 right-1 sm:right-3 bg-[#FF0000] text-white font-black text-xs sm:text-sm px-2 sm:px-2.5 py-0.5 sm:py-1.5 rounded-md z-10">
                               18+
                             </span>
                           </>
                         )}
                       </div>
                     )}
-                    <div className="p-3 sm:p-4 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between gap-2 mb-2.5 sm:mb-3">
-                        <h3 className="font-black text-base sm:text-lg lg:text-xl line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors">
+                    <div className="p-2 sm:p-4 flex-1 flex flex-col sm:gap-2">
+                      <div className="flex items-start justify-between gap-2 mb-1 sm:mb-2">
+                        <h3 className="font-black text-xs sm:text-base lg:text-lg line-clamp-2 flex-1 text-white group-hover:text-[#0088CC] transition-colors leading-tight">
                           {post.title}
                         </h3>
-                        {post.nsfw && (
-                          <span className="text-[#FF0000] font-black text-sm sm:text-base flex-shrink-0">
-                            NSFW
-                          </span>
-                        )}
                       </div>
-                      <p className="text-xs sm:text-sm line-clamp-2 mb-3 sm:mb-4 text-[#d0d0d0] font-semibold flex-1 leading-relaxed">
+                      <p className="hidden sm:block text-xs sm:text-sm line-clamp-1 sm:line-clamp-2 mb-1 sm:mb-2 text-[#d0d0d0] font-semibold flex-1 leading-relaxed">
                         {post.description.replace(/\*\*|[*]/g, "")}
                       </p>
-                      <div className="flex flex-wrap gap-2 opacity-100 group-hover:opacity-100 transition-opacity">
+                      <div className="hidden sm:flex flex-wrap gap-1 opacity-100 group-hover:opacity-100 transition-opacity">
                         {post.country && (
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
-                            <GlobeIcon className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
+                            <GlobeIcon className="w-2.5 h-2.5" />
                             <span className="hidden sm:inline">
-                              {post.country}
-                            </span>
-                            <span className="sm:hidden">
                               {post.country.substring(0, 3)}
                             </span>
                           </span>
                         )}
                         {post.city && (
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
-                            <MapPinIcon className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
+                            <MapPinIcon className="w-2.5 h-2.5" />
                             <span className="hidden sm:inline">
-                              {post.city}
-                            </span>
-                            <span className="sm:hidden">
                               {post.city.substring(0, 3)}
-                            </span>
-                          </span>
-                        )}
-                        {post.server && (
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#2a2a2a] text-[#e0e0e0] border border-[#444444] flex-shrink-0 hover:border-[#0088CC] transition-all">
-                            <ServerIcon className="w-3.5 h-3.5" />
-                            <span className="hidden sm:inline">
-                              {post.server}
-                            </span>
-                            <span className="sm:hidden">
-                              {post.server.substring(0, 3)}
                             </span>
                           </span>
                         )}
