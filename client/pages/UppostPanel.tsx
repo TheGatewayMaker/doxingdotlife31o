@@ -575,70 +575,85 @@ export default function UppostPanel() {
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Thumbnail Image <span className="text-destructive">*</span>
               </label>
-              <div className="border-2 border-dashed border-border/70 rounded-lg sm:rounded-2xl p-6 sm:p-8 text-center cursor-pointer hover:border-accent/70 hover:bg-accent/10 bg-background/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10">
-                <input
-                  type="file"
-                  onChange={handleThumbnailChange}
-                  accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml,image/bmp,image/tiff,image/heic,image/heif,image/avif"
-                  className="hidden"
-                  id="thumbnail-upload"
-                />
-                <label
-                  htmlFor="thumbnail-upload"
-                  className="cursor-pointer block"
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div
+                  className={`col-span-1 md:col-span-1 border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-all duration-300 ${
+                    thumbnailDragActive
+                      ? "border-accent/100 bg-accent/20"
+                      : "border-border/70 hover:border-accent/70 hover:bg-accent/10 bg-background/30"
+                  }`}
+                  onDragEnter={handleThumbnailDrag}
+                  onDragLeave={handleThumbnailDrag}
+                  onDragOver={handleThumbnailDrag}
+                  onDrop={handleThumbnailDrop}
                 >
-                  {thumbnail ? (
-                    <div className="space-y-2 sm:space-y-3">
-                      <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-accent"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <p className="text-xs sm:text-sm font-bold text-accent break-all px-2">
-                        {thumbnail.name}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {(thumbnail.size / 1024 / 1024).toFixed(2)} MB • Ready
-                        to upload
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="space-y-2 sm:space-y-3">
-                      <ImageIcon className="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-muted-foreground" />
-                      <p className="text-xs sm:text-sm font-bold text-foreground">
-                        Click to upload thumbnail
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        All image formats (PNG, JPG, JPEG, GIF, WebP, etc.)
-                      </p>
-                    </div>
-                  )}
-                </label>
-              </div>
-
-              {thumbnailPreview && (
-                <div className="mt-4 sm:mt-6 relative group">
-                  <img
-                    src={thumbnailPreview}
-                    alt="Thumbnail Preview"
-                    className="max-h-40 sm:max-h-48 rounded-lg sm:rounded-xl mx-auto border border-border object-cover"
+                  <input
+                    type="file"
+                    onChange={handleThumbnailChange}
+                    accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml,image/bmp,image/tiff,image/heic,image/heif,image/avif"
+                    className="hidden"
+                    id="thumbnail-upload"
+                    ref={thumbnailInputRef}
                   />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setThumbnail(null);
-                      setThumbnailPreview("");
-                    }}
-                    className="absolute top-2 right-2 bg-destructive text-destructive-foreground p-1.5 sm:p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                  <label
+                    htmlFor="thumbnail-upload"
+                    className="cursor-pointer block"
                   >
-                    <X className="w-4 h-4" />
-                  </button>
+                    {thumbnail ? (
+                      <div className="space-y-1">
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5 mx-auto text-accent"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <p className="text-xs font-bold text-accent break-all px-1">
+                          {thumbnail.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {(thumbnail.size / 1024 / 1024).toFixed(2)} MB
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-muted-foreground" />
+                        <p className="text-xs font-bold text-foreground">
+                          Click or drag
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          thumbnail
+                        </p>
+                      </div>
+                    )}
+                  </label>
                 </div>
-              )}
+
+                {thumbnailPreview && (
+                  <div className="col-span-1 md:col-span-2 relative group">
+                    <img
+                      src={thumbnailPreview}
+                      alt="Thumbnail Preview"
+                      className="max-h-32 sm:max-h-40 rounded-lg border border-border object-cover w-full"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setThumbnail(null);
+                        setThumbnailPreview("");
+                        if (thumbnailInputRef.current) {
+                          thumbnailInputRef.current.value = "";
+                        }
+                      }}
+                      className="absolute top-1 right-1 bg-destructive text-destructive-foreground p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <X className="w-3 h-3 sm:w-4 sm:h-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Location Info */}
