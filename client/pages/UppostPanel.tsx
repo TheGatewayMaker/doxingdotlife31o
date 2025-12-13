@@ -997,7 +997,17 @@ export default function UppostPanel() {
               <label className="block text-xs sm:text-sm font-bold mb-2 sm:mb-3 text-foreground">
                 Media Files <span className="text-destructive">*</span>
               </label>
-              <div className="border-2 border-dashed border-border/70 rounded-lg sm:rounded-2xl p-6 sm:p-10 text-center cursor-pointer hover:border-accent/70 hover:bg-accent/10 bg-background/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10">
+              <div
+                className={`border-2 border-dashed rounded-lg p-4 sm:p-6 text-center cursor-pointer transition-all duration-300 ${
+                  mediaDragActive
+                    ? "border-accent/100 bg-accent/20"
+                    : "border-border/70 hover:border-accent/70 hover:bg-accent/10 bg-background/30"
+                }`}
+                onDragEnter={handleMediaDrag}
+                onDragLeave={handleMediaDrag}
+                onDragOver={handleMediaDrag}
+                onDrop={handleMediaDrop}
+              >
                 <input
                   type="file"
                   onChange={handleMediaChange}
@@ -1005,12 +1015,13 @@ export default function UppostPanel() {
                   multiple
                   className="hidden"
                   id="media-upload"
+                  ref={mediaInputRef}
                 />
                 <label htmlFor="media-upload" className="cursor-pointer block">
                   {mediaFiles.length > 0 ? (
-                    <div className="space-y-2 sm:space-y-3">
+                    <div className="space-y-1">
                       <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-accent"
+                        className="w-4 h-4 sm:w-5 sm:h-5 mx-auto text-accent"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -1019,22 +1030,20 @@ export default function UppostPanel() {
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       <p className="text-xs sm:text-sm font-bold text-accent">
-                        {mediaFiles.length} file
-                        {mediaFiles.length !== 1 ? "s" : ""} selected
+                        {mediaFiles.length} file{mediaFiles.length !== 1 ? "s" : ""} selected
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Click to add more files
+                        Click or drag to add more
                       </p>
                     </div>
                   ) : (
-                    <div className="space-y-2 sm:space-y-3">
-                      <UploadIcon className="w-8 h-8 sm:w-10 sm:h-10 mx-auto text-muted-foreground" />
+                    <div className="space-y-1">
+                      <UploadIcon className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-muted-foreground" />
                       <p className="text-xs sm:text-sm font-bold text-foreground">
-                        Click to upload media files
+                        Click or drag files
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Images and videos supported (unlimited size and
-                        quantity)
+                        Images and videos supported
                       </p>
                     </div>
                   )}
@@ -1042,43 +1051,41 @@ export default function UppostPanel() {
               </div>
 
               {mediaPreviews.length > 0 && (
-                <div className="mt-4 sm:mt-6">
-                  <div className="mb-3 sm:mb-4">
-                    <p className="text-xs sm:text-sm font-semibold text-foreground mb-2 sm:mb-3">
-                      Uploaded Media ({mediaPreviews.length})
-                    </p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
-                      {mediaPreviews.map((media, idx) => (
-                        <div
-                          key={idx}
-                          className="relative group animate-scaleUpFadeIn"
-                          style={{ animationDelay: `${idx * 0.05}s` }}
+                <div className="mt-4">
+                  <p className="text-xs sm:text-sm font-semibold text-foreground mb-2">
+                    Uploaded Media ({mediaPreviews.length})
+                  </p>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
+                    {mediaPreviews.map((media, idx) => (
+                      <div
+                        key={idx}
+                        className="relative group animate-scaleUpFadeIn"
+                        style={{ animationDelay: `${idx * 0.05}s` }}
+                      >
+                        {media.type.startsWith("image/") ? (
+                          <img
+                            src={media.preview}
+                            alt={`Preview ${idx}`}
+                            className="w-full aspect-square rounded-md border border-border object-cover hover:border-accent/60 transition-colors"
+                          />
+                        ) : (
+                          <video
+                            src={media.preview}
+                            className="w-full aspect-square rounded-md border border-border object-cover bg-muted hover:border-accent/60 transition-colors"
+                          />
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => removeMediaFile(idx)}
+                          className="absolute top-0 right-0 bg-destructive text-destructive-foreground p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity"
                         >
-                          {media.type.startsWith("image/") ? (
-                            <img
-                              src={media.preview}
-                              alt={`Preview ${idx}`}
-                              className="w-full aspect-square rounded-lg border border-border object-cover hover:border-accent/60 transition-colors"
-                            />
-                          ) : (
-                            <video
-                              src={media.preview}
-                              className="w-full aspect-square rounded-lg border border-border object-cover bg-muted hover:border-accent/60 transition-colors"
-                            />
-                          )}
-                          <button
-                            type="button"
-                            onClick={() => removeMediaFile(idx)}
-                            className="absolute top-0.5 right-0.5 bg-destructive text-destructive-foreground p-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <X className="w-3 h-3 sm:w-4 sm:h-4" />
-                          </button>
-                          <div className="absolute bottom-0.5 left-0.5 bg-black/50 text-white text-xs px-1.5 py-0.5 rounded">
-                            {idx + 1}
-                          </div>
+                          <X className="w-3 h-3" />
+                        </button>
+                        <div className="absolute bottom-0 left-0 bg-black/50 text-white text-xs px-1 py-0.5 rounded-br-md">
+                          {idx + 1}
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
