@@ -2,6 +2,7 @@ import {
   HomeIcon,
   LinkIcon,
   SearchAltIcon,
+  MessageIcon,
   FileTextIcon,
   ScaleIcon,
   AlertIcon,
