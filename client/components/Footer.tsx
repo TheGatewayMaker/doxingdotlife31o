@@ -2,14 +2,9 @@ import {
   HomeIcon,
   LinkIcon,
   SearchAltIcon,
-  MessageIcon,
   FileTextIcon,
   ScaleIcon,
   AlertIcon,
-  ShoppingCartIcon,
-  CreditCardIcon,
-  PhoneIcon,
-  MailIcon,
 } from "@/components/Icons";
 
 export default function Footer() {
