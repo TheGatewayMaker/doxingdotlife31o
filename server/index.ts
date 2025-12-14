@@ -347,6 +347,9 @@ export function createServer() {
   app.get("/api/posts", handleGetPosts);
   app.get("/api/servers", handleGetServers);
 
+  // Video watermarking endpoint
+  app.post("/api/watermark-video", asyncHandler(handleWatermarkVideo));
+
   // Admin routes (no auth required)
   app.delete("/api/posts/:postId", handleDeletePost);
   app.delete("/api/posts/:postId/media/:fileName", handleDeleteMediaFile);
