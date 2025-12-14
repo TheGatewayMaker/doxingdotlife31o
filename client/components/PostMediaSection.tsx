@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Download, Play } from "lucide-react";
 import { addWatermarkToImage, addWatermarkToVideo } from "@/lib/watermark";
 import { toast } from "sonner";
@@ -16,6 +16,13 @@ interface PostMediaSectionProps {
   thumbnailUrl?: string;
 }
 
+interface MediaItem extends MediaFile {
+  index: number;
+  isVideo: boolean;
+  isPhoto: boolean;
+  duration?: number;
+}
+
 export default function PostMediaSection({
   mediaFiles,
   postTitle,
@@ -28,7 +35,9 @@ export default function PostMediaSection({
   const photos = filteredMediaFiles.filter((f) => f.type.startsWith("image/"));
   const videos = filteredMediaFiles.filter((f) => f.type.startsWith("video/"));
 
-  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
+  const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
+  const [videoDurations, setVideoDurations] = useState<{ [key: string]: number }>({});
+  const videoRefsForDuration = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   if (photos.length === 0 && videos.length === 0) {
     return null;
