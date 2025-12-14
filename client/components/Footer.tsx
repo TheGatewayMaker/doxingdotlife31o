@@ -112,41 +112,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="animate-slideInUp" style={{ animationDelay: "0.4s" }}>
-            <h4 className="font-bold text-white mb-3 sm:mb-4 flex items-center gap-2 text-xs sm:text-sm uppercase tracking-wider">
-              <MessageIcon className="w-4 h-4 text-[#979797] flex-shrink-0" />
-              <span>Support</span>
-            </h4>
-            <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-[#979797]">
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1 py-1"
-                >
-                  <FileTextIcon className="w-4 h-4 flex-shrink-0" />
-                  <span className="line-clamp-1">API Documentation</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1 py-1"
-                >
-                  <MessageIcon className="w-4 h-4 flex-shrink-0" />
-                  <span>FAQ & Help</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-[#0088CC] transition-colors duration-200 flex items-center gap-2 hover:translate-x-1 py-1"
-                >
-                  <AlertIcon className="w-4 h-4 flex-shrink-0" />
-                  <span className="line-clamp-1">Report Data Issue</span>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
         <div className="border-t border-[#666666] pt-6 sm:pt-8 md:pt-10">
           <div className="text-center text-xs sm:text-sm text-[#666666]">
